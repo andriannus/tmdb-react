@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.AppBox {
+  @apply bg-white md:border border-gray-300 p-4 md:rounded-sm;
+}
