@@ -1,3 +1,5 @@
+import type { AxiosRequestConfig } from 'axios';
+
 import { apiTMDBService } from '#/services/tmdb-service';
 import type {
   MovieDetail,
@@ -6,9 +8,13 @@ import type {
   MovieReviewResponse,
 } from '#/types/movie';
 
-export async function fetchMovieList(category: string) {
+export async function fetchMovieList(
+  category: string,
+  config: AxiosRequestConfig,
+) {
   const { data } = await apiTMDBService.get<MovieListResponse>(
     `/movie/${category}`,
+    config,
   );
 
   return data;

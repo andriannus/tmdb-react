@@ -1,5 +1,9 @@
 @reference "tailwindcss";
 
+.Movies-categories {
+  @apply overflow-auto whitespace-nowrap;
+}
+
 .Movies-categories > :not(:last-child) {
   @apply mr-2;
 }

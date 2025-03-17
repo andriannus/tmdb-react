@@ -1,0 +1,30 @@
+@reference "tailwindcss";
+
+.MovieCard:hover {
+  @apply cursor-pointer;
+}
+
+.MovieCard:hover .MovieCard-title {
+  @apply underline;
+}
+
+.MovieCard-poster,
+.MovieCard-img {
+  height: 266px;
+}
+
+.MovieCard-poster {
+  @apply bg-gray-300 overflow-hidden rounded-sm w-full;
+}
+
+.MovieCard-img {
+  @apply object-cover w-full;
+}
+
+.MovieCard-title {
+  @apply block font-semibold overflow-hidden text-base text-blue-500 text-ellipsis whitespace-nowrap;
+}
+
+.MovieCard-date {
+  @apply block text-sm text-gray-700;
+}

@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+
+.LoadMore {
+  @apply flex items-center justify-center mt-4;
+}
+
+.LoadMore-button {
+  @apply border border-sky-500 cursor-pointer outline-none px-4 py-1 rounded-sm select-none text-sky-500 text-xs;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.LoadMore-button:focus,
+.LoadMore-button:active {
+  @apply text-sky-200;
+}

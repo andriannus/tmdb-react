@@ -2,13 +2,13 @@ import type { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import axios, { AxiosError } from 'axios';
 
 const apiTMDBService = axios.create({
-  baseURL: process.env.VITE_TMDB_SERVICE_URL,
+  baseURL: import.meta.env.VITE_TMDB_SERVICE_URL,
 });
 
 function interceptConfigRequest(
   config: InternalAxiosRequestConfig<unknown>,
 ): InternalAxiosRequestConfig<unknown> {
-  const token = process.env.VITE_TMDB_API_TOKEN;
+  const token = import.meta.env.VITE_TMDB_API_TOKEN;
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
