@@ -1,5 +1,5 @@
 @reference "tailwindcss";
 
-.Discover-categories > :not(:last-child) {
+.Movies-categories > :not(:last-child) {
   @apply mr-2;
 }

@@ -5,9 +5,9 @@ import { AppTag } from '#/components/app-tag';
 
 import { CATEGORIES } from './shared/constants';
 
-import styles from './discover.module.css';
+import styles from './movies.module.css';
 
-function Discover() {
+function Movies() {
   return (
     <>
       <AppBar>
@@ -16,7 +16,7 @@ function Discover() {
 
       <main>
         <AppBox>
-          <div className={styles['Discover-categories']}>
+          <div className={styles['Movies-categories']}>
             {CATEGORIES.map((category) => {
               return <AppTag key={category.value}>{category.label}</AppTag>;
             })}
@@ -27,4 +27,4 @@ function Discover() {
   );
 }
 
-export default Discover;
+export default Movies;

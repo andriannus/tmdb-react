@@ -69,3 +69,11 @@ export type MovieReview = {
 };
 
 export type MovieReviewResponse = PaginationWithResults<MovieReview>;
+
+export type MovieDates = {
+  maximum: string;
+  minimum: string;
+};
+
+export type MovieListResponse = MovieDates &
+  PaginationWithResults<MovieForList>;
