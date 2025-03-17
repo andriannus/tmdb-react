@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .AppTag {
-  @apply border border-gray-300 cursor-pointer font-medium px-3 py-1 rounded-full text-xs;
+  @apply border border-gray-300 cursor-pointer inline-flex font-medium px-3 py-1 rounded-full text-xs;
 }
 
 .AppTag:hover {

@@ -1,13 +1,15 @@
-import type { PropsWithChildren } from 'react';
+import cc from 'classcat';
+import type { HTMLAttributes, PropsWithChildren } from 'react';
 
 import styles from './app-tag.module.css';
-import cc from 'classcat';
 
-type AppTagProps = PropsWithChildren<{
-  active?: boolean;
-}>;
+type AppTagProps = PropsWithChildren<
+  {
+    active?: boolean;
+  } & HTMLAttributes<HTMLSpanElement>
+>;
 
-function AppTag({ active, children }: AppTagProps) {
+function AppTag({ active, children, className, ...props }: AppTagProps) {
   return (
     <span
       className={cc([
@@ -15,7 +17,9 @@ function AppTag({ active, children }: AppTagProps) {
           [styles['AppTag--active']]: active,
         },
         styles.AppTag,
+        className,
       ])}
+      {...props}
     >
       {children}
     </span>
