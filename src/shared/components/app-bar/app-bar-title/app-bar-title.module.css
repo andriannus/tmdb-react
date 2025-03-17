@@ -1,0 +1,12 @@
+@reference "tailwindcss";
+
+.AppBar-title {
+  @apply flex-grow select-none text-gray-900;
+
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.AppBar-title--isBrand {
+  @apply font-extrabold text-xl leading-6;
+}

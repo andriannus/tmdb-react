@@ -1,0 +1,20 @@
+@reference "tailwindcss";
+
+.AppBar-backButton {
+  @apply flex h-6 items-center justify-center outline-none rounded-full transition duration-300 w-6;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.AppBar-backButton:active,
+.AppBar-backButton:focus {
+  @apply bg-gray-300;
+}
+
+.AppBar-backButton:disabled {
+  @apply cursor-not-allowed;
+}
+
+.AppBar-backButton:disabled.AppBar-backButton:active,
+.AppBar-backButton:disabled.AppBar-backButton:focus {
+  @apply bg-transparent;
+}

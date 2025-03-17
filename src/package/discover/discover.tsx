@@ -1,5 +1,14 @@
+import AppBar from '#/components/app-bar/app-bar';
+import { AppBarTitle } from '#/components/app-bar/app-bar-title';
+
 function Discover() {
-  return <h1 className="text-3xl font-bold underline">Discover</h1>;
+  return (
+    <>
+      <AppBar>
+        <AppBarTitle brand>TMDB React</AppBarTitle>
+      </AppBar>
+    </>
+  );
 }
 
 export default Discover;
