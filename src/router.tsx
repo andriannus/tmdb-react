@@ -19,12 +19,22 @@ const Search = lazy(() =>
   })),
 );
 
+const NotFound = lazy(() =>
+  import('./package/standalone/not-found').then((module) => ({
+    default: module.NotFound,
+  })),
+);
+
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="*" element={<Navigate to="/404" replace />} />
+
         <Route path="/" element={<LayoutDefault />}>
           <Route index element={<Navigate to="/movies" replace />} />
+
+          <Route path="404" element={<NotFound />} />
 
           <Route path="movies">
             <Route index element={<Movies />} />
