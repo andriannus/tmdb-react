@@ -1,0 +1,21 @@
+@reference "tailwindcss";
+
+.SearchField {
+  @apply bg-gray-100 flex p-2 rounded-sm w-full;
+}
+
+.SearchField-wrapper {
+  @apply h-fit w-fit;
+}
+
+.SearchField-icon {
+  @apply h-4 mr-2 p-1 w-4;
+}
+
+.SearchField-input {
+  @apply bg-transparent outline-none text-sm leading-5 w-full;
+}
+
+.SearchField-input::placeholder {
+  @apply text-gray-400;
+}

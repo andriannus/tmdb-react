@@ -13,6 +13,12 @@ const Movie = lazy(() =>
   })),
 );
 
+const Search = lazy(() =>
+  import('./package/movies/search').then((module) => ({
+    default: module.Search,
+  })),
+);
+
 function Router() {
   return (
     <BrowserRouter>
@@ -23,6 +29,10 @@ function Router() {
           <Route path="movies">
             <Route index element={<Movies />} />
             <Route path=":id" element={<Movie />} />
+          </Route>
+
+          <Route path="search">
+            <Route index element={<Search />} />
           </Route>
         </Route>
       </Routes>
