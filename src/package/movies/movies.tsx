@@ -39,7 +39,7 @@ function Movies() {
 
   return (
     <>
-      <AppBar>
+      <AppBar showSearch>
         <AppBarTitle brand>TMDB React</AppBarTitle>
       </AppBar>
 

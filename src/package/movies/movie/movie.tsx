@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { fetchMovie } from '#/apis/movie';
 import { AppBar } from '#/components/app-bar';
 import { AppBarBackButton } from '#/components/app-bar/app-bar-back-button';
+import { AppBarTitle } from '#/components/app-bar/app-bar-title';
 import { AppBox } from '#/components/app-box';
 import { AppInfo } from '#/components/app-info';
 import { TMDB_IMAGE_BASE_URL } from '#/constants/movie';
@@ -35,8 +36,9 @@ function Movie() {
 
   return (
     <>
-      <AppBar>
+      <AppBar showSearch>
         <AppBarBackButton to="/" />
+        <AppBarTitle>Detail</AppBarTitle>
       </AppBar>
 
       <main>
