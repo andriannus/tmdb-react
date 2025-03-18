@@ -30,10 +30,42 @@ function MovieCredit({ movieID }: MovieCreditProps) {
       <AppBox className="mt-4">
         <span className={styles['MovieCredit-title']}>Directing</span>
 
-        <div className={styles['MovieCredit-list']}>
-          {queryCredit.data?.crew
-            .filter((crew) => crew.department === 'Directing')
-            .map((crew) => (
+        {queryCredit.data?.crew.length === 0 ? (
+          <AppInfo>No data</AppInfo>
+        ) : (
+          <div className={styles['MovieCredit-list']}>
+            {queryCredit.data?.crew
+              .filter((crew) => crew.department === 'Directing')
+              .map((crew) => (
+                <div key={crew.id} className={styles['MovieCredit-listItem']}>
+                  <div className={styles['MovieCredit-photo']}>
+                    {crew.profile_path && (
+                      <img
+                        src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
+                        alt={crew.name}
+                        className={styles['MovieCredit-img']}
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex flex-col">
+                    <span className="font-semibold">{crew.name}</span>
+                    <span className="text-sm text-gray-400">{crew.job}</span>
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
+      </AppBox>
+
+      <AppBox className="mt-4">
+        <span className={styles['MovieCredit-title']}>Cast</span>
+
+        {queryCredit.data?.cast.length === 0 ? (
+          <AppInfo>No data</AppInfo>
+        ) : (
+          <div className={styles['MovieCredit-list']}>
+            {queryCredit.data?.cast.map((crew) => (
               <div key={crew.id} className={styles['MovieCredit-listItem']}>
                 <div className={styles['MovieCredit-photo']}>
                   {crew.profile_path && (
@@ -47,36 +79,14 @@ function MovieCredit({ movieID }: MovieCreditProps) {
 
                 <div className="flex flex-col">
                   <span className="font-semibold">{crew.name}</span>
-                  <span className="text-sm text-gray-400">{crew.job}</span>
+                  <span className="text-sm text-gray-400">
+                    {crew.character}
+                  </span>
                 </div>
               </div>
             ))}
-        </div>
-      </AppBox>
-
-      <AppBox className="mt-4">
-        <span className={styles['MovieCredit-title']}>Cast</span>
-
-        <div className={styles['MovieCredit-list']}>
-          {queryCredit.data?.cast.map((crew) => (
-            <div key={crew.id} className={styles['MovieCredit-listItem']}>
-              <div className={styles['MovieCredit-photo']}>
-                {crew.profile_path && (
-                  <img
-                    src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
-                    alt={crew.name}
-                    className={styles['MovieCredit-img']}
-                  />
-                )}
-              </div>
-
-              <div className="flex flex-col">
-                <span className="font-semibold">{crew.name}</span>
-                <span className="text-sm text-gray-400">{crew.character}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+          </div>
+        )}
       </AppBox>
     </>
   );
