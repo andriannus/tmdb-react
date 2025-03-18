@@ -2,7 +2,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useNavigate } from 'react-router-dom';
 
-import styles from './app-bar-back-button.module.css';
+import styles from '../app-bar.module.css';
 
 type AppBarBackButtonProps = {
   disabled: boolean;
@@ -22,12 +22,12 @@ function AppBarBackButton({
       <Link
         id="BtnAppBarBack"
         aria-label="Back"
-        className={styles['AppBar-backButton']}
+        className={styles['AppBar-button']}
         replace={replace}
         role="button"
         to={to}
       >
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={faArrowLeft} fixedWidth />
       </Link>
     );
   }
@@ -36,13 +36,13 @@ function AppBarBackButton({
     <button
       id="BtnAppBarBack"
       aria-label="Back"
-      className={styles['AppBar-backButton']}
+      className={styles['AppBar-button']}
       disabled={disabled}
       onClick={() => {
         navigate(-1);
       }}
     >
-      <FontAwesomeIcon icon={faArrowLeft} />
+      <FontAwesomeIcon icon={faArrowLeft} fixedWidth />
     </button>
   );
 }

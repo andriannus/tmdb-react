@@ -6,10 +6,21 @@
   height: 56px;
 }
 
-.AppBar > :not(:last-child) {
-  @apply mr-2;
+.AppBar-button {
+  @apply flex h-6 items-center justify-center outline-none rounded-full transition duration-300 w-6;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.AppBar > :nth-child(2) {
-  @apply flex-grow;
+.AppBar-button:active,
+.AppBar-button:focus {
+  @apply bg-gray-300;
+}
+
+.AppBar-button:disabled {
+  @apply cursor-not-allowed;
+}
+
+.AppBar-button:disabled.AppBar-button:active,
+.AppBar-button:disabled.AppBar-button:focus {
+  @apply bg-transparent;
 }

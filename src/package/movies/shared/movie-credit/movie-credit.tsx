@@ -44,6 +44,7 @@ function MovieCredit({ movieID }: MovieCreditProps) {
                         src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
                         alt={crew.name}
                         className={styles['MovieCredit-img']}
+                        loading="lazy"
                       />
                     )}
                   </div>
@@ -73,6 +74,7 @@ function MovieCredit({ movieID }: MovieCreditProps) {
                       src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
                       alt={crew.name}
                       className={styles['MovieCredit-img']}
+                      loading="lazy"
                     />
                   )}
                 </div>
