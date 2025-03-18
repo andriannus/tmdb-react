@@ -61,41 +61,45 @@ function Movies() {
           </div>
         </AppBox>
 
-        {queryMovieList.isFetching && !queryMovieList.isFetchingNextPage && (
+        {queryMovieList.isFetching && !queryMovieList.isFetchingNextPage ? (
           <AppBox>
             <div className="mt-4 border border-transparent text-center">
               <span className="text-xs">Loading...</span>
             </div>
           </AppBox>
-        )}
-
-        {queryMovieList.data?.pages[0].results.length === 0 ? (
-          <AppBox>
-            <div className="mt-4 border border-transparent text-center">
-              <span className="text-xs">No data</span>
-            </div>
-          </AppBox>
         ) : (
-          <AppBox className="lg:mb-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              {queryMovieList.data?.pages.map((page) => {
-                return page.results.map((movie) => {
-                  return <MovieCard key={movie.id} movie={movie} />;
-                });
-              })}
-            </div>
-
-            {queryMovieList.isFetchingNextPage && (
-              <div className="mt-4 border border-transparent text-center">
-                <span className="text-xs">Loading...</span>
-              </div>
+          <>
+            {!queryMovieList.data?.pages[0].results.length && (
+              <AppBox>
+                <div className="mt-4 border border-transparent text-center">
+                  <span className="text-xs">No data</span>
+                </div>
+              </AppBox>
             )}
 
-            {!queryMovieList.isFetchingNextPage &&
-              queryMovieList.hasNextPage && (
-                <LoadMore onClick={queryMovieList.fetchNextPage} />
-              )}
-          </AppBox>
+            {!!queryMovieList.data?.pages[0].results.length && (
+              <AppBox className="lg:mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  {queryMovieList.data?.pages.map((page) => {
+                    return page.results.map((movie) => {
+                      return <MovieCard key={movie.id} movie={movie} />;
+                    });
+                  })}
+                </div>
+
+                {queryMovieList.isFetchingNextPage && (
+                  <div className="mt-4 border border-transparent text-center">
+                    <span className="text-xs">Loading...</span>
+                  </div>
+                )}
+
+                {!queryMovieList.isFetchingNextPage &&
+                  queryMovieList.hasNextPage && (
+                    <LoadMore onClick={queryMovieList.fetchNextPage} />
+                  )}
+              </AppBox>
+            )}
+          </>
         )}
       </main>
     </>
