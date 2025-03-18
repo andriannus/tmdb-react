@@ -37,7 +37,7 @@ function Movie() {
   return (
     <>
       <AppBar showSearch>
-        <AppBarBackButton to="/" />
+        <AppBarBackButton />
         <AppBarTitle>Detail</AppBarTitle>
       </AppBar>
 
