@@ -5,6 +5,7 @@ import { fetchMovieList } from '#/apis/movie';
 import { AppBar } from '#/components/app-bar';
 import { AppBarTitle } from '#/components/app-bar/app-bar-title';
 import { AppBox } from '#/components/app-box';
+import { AppInfo } from '#/components/app-info';
 import { AppTag } from '#/components/app-tag';
 
 import { CATEGORIES } from './shared/constants';
@@ -63,17 +64,13 @@ function Movies() {
 
         {queryMovieList.isFetching && !queryMovieList.isFetchingNextPage ? (
           <AppBox>
-            <div className="mt-4 border border-transparent text-center">
-              <span className="text-xs">Loading...</span>
-            </div>
+            <AppInfo>Loading...</AppInfo>
           </AppBox>
         ) : (
           <>
             {!queryMovieList.data?.pages[0].results.length && (
               <AppBox>
-                <div className="mt-4 border border-transparent text-center">
-                  <span className="text-xs">No data</span>
-                </div>
+                <AppInfo>No data</AppInfo>
               </AppBox>
             )}
 
@@ -88,9 +85,9 @@ function Movies() {
                 </div>
 
                 {queryMovieList.isFetchingNextPage && (
-                  <div className="mt-4 border border-transparent text-center">
-                    <span className="text-xs">Loading...</span>
-                  </div>
+                  <AppInfo className="border border-transparent mt-4">
+                    Loading...
+                  </AppInfo>
                 )}
 
                 {!queryMovieList.isFetchingNextPage &&

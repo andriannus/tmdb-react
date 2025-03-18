@@ -1,0 +1,21 @@
+@reference "tailwindcss";
+
+.MovieCredit-title {
+  @apply block font-bold leading-5 mb-4 text-gray-900;
+}
+
+.MovieCredit-list {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-2;
+}
+
+.MovieCredit-listItem {
+  @apply flex items-center not-last:mb-3 gap-2;
+}
+
+.MovieCredit-photo {
+  @apply bg-gray-300 h-18 overflow-auto rounded-full w-18;
+}
+
+.MovieCredit-img {
+  @apply h-full object-cover w-full;
+}

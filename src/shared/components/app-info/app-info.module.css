@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.AppInfo {
+  @apply border border-transparent text-center;
+}
+
+.AppInfo-text {
+  @apply text-xs;
+}

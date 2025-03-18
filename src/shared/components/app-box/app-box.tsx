@@ -3,9 +3,9 @@ import type { HTMLAttributes, PropsWithChildren } from 'react';
 
 import styles from './app-box.module.css';
 
-type AppBox = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
+type AppBoxProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
-function AppBox({ children, className, ...props }: AppBox) {
+function AppBox({ children, className, ...props }: AppBoxProps) {
   return (
     <div className={cc([styles.AppBox, className])} {...props}>
       {children}

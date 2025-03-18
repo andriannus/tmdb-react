@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 .AppBar {
-  @apply bg-white flex items-center justify-between md:mb-6 p-4 sticky top-0 w-full z-10;
+  @apply bg-white flex items-center justify-between md:mb-6 p-4 sticky top-0 w-full z-20;
 
   height: 56px;
 }

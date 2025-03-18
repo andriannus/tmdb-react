@@ -1,3 +1,4 @@
+import type { CreditCast, CreditCrew } from './credit';
 import type { GenreMovie } from './genre';
 import type { PaginationWithResults } from './pagination';
 import type { ProductionCompany, ProductionCountry } from './production';
@@ -77,3 +78,9 @@ export type MovieDates = {
 
 export type MovieListResponse = MovieDates &
   PaginationWithResults<MovieForList>;
+
+export type MovieCreditResponse = {
+  id: number;
+  cast: CreditCast[];
+  crew: CreditCrew[];
+};

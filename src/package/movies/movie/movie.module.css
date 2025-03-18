@@ -1,0 +1,42 @@
+@reference "tailwindcss";
+
+.Movie-poster,
+.Movie-img {
+  @apply h-132.5 sm:h-87.5;
+}
+
+.Movie-backdrop {
+  @apply bg-cover relative;
+}
+
+.Movie-backdrop::before {
+  @apply absolute h-full left-0 top-0 w-full;
+
+  background-color: rgba(255, 255, 255, 0.95);
+  content: '';
+  z-index: 1;
+}
+
+.Movie-poster {
+  @apply bg-gray-300 overflow-hidden rounded-sm w-full;
+}
+
+.Movie-img {
+  @apply object-cover w-full;
+}
+
+.Movie-title {
+  @apply font-semibold text-3xl;
+}
+
+.Movie-genres {
+  @apply block mb-4 text-gray-500 text-sm;
+}
+
+.Movie-subtitle {
+  @apply block font-medium mb-1 text-lg;
+}
+
+.Movie-overview {
+  @apply text-gray-800 text-sm;
+}
