@@ -8,11 +8,9 @@ import { AppBar } from '#/components/app-bar';
 import { AppBarBackButton } from '#/components/app-bar/app-bar-back-button';
 import { AppBarTitle } from '#/components/app-bar/app-bar-title';
 import { AppBox } from '#/components/app-box';
-import { AppInfo } from '#/components/app-info';
 import useDebounce from '#/hooks/use-debounce';
 
-import { MovieCard } from '../shared/movie-card';
-import { LoadMore } from '../shared/load-more';
+import { InfiniteMovies } from '../shared/infinite-movies';
 
 import styles from './search.module.css';
 
@@ -67,43 +65,7 @@ function Search() {
           </div>
         </AppBox>
 
-        {querySearchMovieList.isFetching &&
-        !querySearchMovieList.isFetchingNextPage ? (
-          <AppBox className="mt-4">
-            <AppInfo>Loading...</AppInfo>
-          </AppBox>
-        ) : (
-          <>
-            {!querySearchMovieList.data?.pages[0].results.length && (
-              <AppBox className="mt-4">
-                <AppInfo>No data</AppInfo>
-              </AppBox>
-            )}
-
-            {!!querySearchMovieList.data?.pages[0].results.length && (
-              <AppBox className="lg:mt-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  {querySearchMovieList.data?.pages.map((page) => {
-                    return page.results.map((movie) => {
-                      return <MovieCard key={movie.id} movie={movie} />;
-                    });
-                  })}
-                </div>
-
-                {querySearchMovieList.isFetchingNextPage && (
-                  <AppInfo className="border border-transparent mt-4">
-                    Loading...
-                  </AppInfo>
-                )}
-
-                {!querySearchMovieList.isFetchingNextPage &&
-                  querySearchMovieList.hasNextPage && (
-                    <LoadMore onClick={querySearchMovieList.fetchNextPage} />
-                  )}
-              </AppBox>
-            )}
-          </>
-        )}
+        <InfiniteMovies queryInfinite={querySearchMovieList} />
       </main>
     </>
   );

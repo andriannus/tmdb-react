@@ -5,13 +5,11 @@ import { fetchMovieList } from '#/apis/movie';
 import { AppBar } from '#/components/app-bar';
 import { AppBarTitle } from '#/components/app-bar/app-bar-title';
 import { AppBox } from '#/components/app-box';
-import { AppInfo } from '#/components/app-info';
 import { AppTag } from '#/components/app-tag';
 
 import { CATEGORIES } from './shared/constants';
 import { MovieCategory } from './shared/enums';
-import { LoadMore } from './shared/load-more';
-import { MovieCard } from './shared/movie-card';
+import { InfiniteMovies } from './shared/infinite-movies';
 
 import styles from './movies.module.css';
 
@@ -62,42 +60,7 @@ function Movies() {
           </div>
         </AppBox>
 
-        {queryMovieList.isFetching && !queryMovieList.isFetchingNextPage ? (
-          <AppBox>
-            <AppInfo>Loading...</AppInfo>
-          </AppBox>
-        ) : (
-          <>
-            {!queryMovieList.data?.pages[0].results.length && (
-              <AppBox>
-                <AppInfo>No data</AppInfo>
-              </AppBox>
-            )}
-
-            {!!queryMovieList.data?.pages[0].results.length && (
-              <AppBox className="lg:mb-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  {queryMovieList.data?.pages.map((page) => {
-                    return page.results.map((movie) => {
-                      return <MovieCard key={movie.id} movie={movie} />;
-                    });
-                  })}
-                </div>
-
-                {queryMovieList.isFetchingNextPage && (
-                  <AppInfo className="border border-transparent mt-4">
-                    Loading...
-                  </AppInfo>
-                )}
-
-                {!queryMovieList.isFetchingNextPage &&
-                  queryMovieList.hasNextPage && (
-                    <LoadMore onClick={queryMovieList.fetchNextPage} />
-                  )}
-              </AppBox>
-            )}
-          </>
-        )}
+        <InfiniteMovies queryInfinite={queryMovieList} />
       </main>
     </>
   );
