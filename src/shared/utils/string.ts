@@ -1,7 +1,3 @@
-export function toFixedIfNecessary(value: number, decimalPoint = 1) {
-  return +value.toFixed(decimalPoint);
-}
-
 export function printString(value: unknown, defaultValue = '-'): string {
   const invalidValues = [null, undefined, ''];
 
