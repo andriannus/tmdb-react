@@ -19,7 +19,7 @@ function CreditList({ value }: CreditListProps) {
           <div className={styles['CreditList-photo']}>
             {crew.profile_path && (
               <img
-                src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
+                src={`${TMDB_IMAGE_BASE_URL}/w200${crew.profile_path}`}
                 alt={crew.title}
                 className={styles['CreditList-img']}
                 loading="lazy"

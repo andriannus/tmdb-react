@@ -10,6 +10,7 @@ type AppBarTitleProps = PropsWithChildren<{
 function AppBarTitle({ children, brand = false }: AppBarTitleProps) {
   return (
     <h1
+      data-testid="AppBarTitle"
       className={cc([
         {
           [styles['AppBar-title--isBrand']]: brand,

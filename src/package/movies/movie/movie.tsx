@@ -46,7 +46,7 @@ function Movie() {
           <AppBox
             style={{
               backgroundImage: queryMovie.data?.backdrop_path
-                ? `url(${TMDB_IMAGE_BASE_URL}/original/${queryMovie.data?.backdrop_path})`
+                ? `url(${TMDB_IMAGE_BASE_URL}/original${queryMovie.data?.backdrop_path})`
                 : 'none',
             }}
             className={styles['Movie-backdrop']}
@@ -61,7 +61,7 @@ function Movie() {
               >
                 {queryMovie.data?.poster_path && (
                   <img
-                    src={`${TMDB_IMAGE_BASE_URL}/w300/${queryMovie.data?.poster_path}`}
+                    src={`${TMDB_IMAGE_BASE_URL}/w300${queryMovie.data?.poster_path}`}
                     alt={queryMovie.data?.title}
                     className={styles['Movie-img']}
                   />

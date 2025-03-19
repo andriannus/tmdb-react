@@ -16,7 +16,7 @@ function MovieCard({ movie }: MovieCardProps) {
       <div className={styles['MovieCard-poster']}>
         {movie.poster_path && (
           <img
-            src={`${TMDB_IMAGE_BASE_URL}/w200/${movie.poster_path}`}
+            src={`${TMDB_IMAGE_BASE_URL}/w200${movie.poster_path}`}
             alt={movie.title}
             className={styles['MovieCard-img']}
             loading="lazy"

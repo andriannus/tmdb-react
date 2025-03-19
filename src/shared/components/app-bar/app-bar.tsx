@@ -11,11 +11,15 @@ type AppBarProps = PropsWithChildren<{
 
 function AppBar({ children, showSearch = false }: AppBarProps) {
   return (
-    <header className={styles.AppBar}>
+    <header data-testid="AppBar" className={styles.AppBar}>
       {children}
 
       {showSearch && (
-        <Link className={styles['AppBar-button']} to="/search">
+        <Link
+          data-testid="BtnAppBarSearch"
+          className={styles['AppBar-button']}
+          to="/search"
+        >
           <FontAwesomeIcon icon={faSearch} fixedWidth />
         </Link>
       )}

@@ -37,7 +37,7 @@ export type MovieBelongsToCollection = {
 };
 
 export type MovieDetail = MovieGeneral & {
-  belongs_to_collection: MovieBelongsToCollection;
+  belongs_to_collection: MovieBelongsToCollection | null;
   budget: number;
   genres: GenreMovie[];
   homepage: string;
