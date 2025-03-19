@@ -8,8 +8,8 @@
     "dev": "vite",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview",
     "prepare": "husky",
+    "preview": "vite preview",
     "release": "standard-version",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
