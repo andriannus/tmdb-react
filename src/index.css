@@ -3,3 +3,9 @@
 html {
   @apply bg-gray-50;
 }
+
+@theme {
+  --font-sans: 'Open Sans', system-ui, sans-serif;
+}
+
+@import './fonts.css';
