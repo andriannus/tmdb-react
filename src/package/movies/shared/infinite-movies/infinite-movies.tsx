@@ -44,7 +44,7 @@ function InfiniteMovies({ queryInfinite }: InfiniteMoviesProps) {
   }
 
   return (
-    <AppBox className="lg:mt-4">
+    <AppBox>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
         {queryInfinite.data?.pages.map((page) => {
           return page.results.map((movie) => {

@@ -1,5 +1,5 @@
 @reference "tailwindcss";
 
 .LayoutDefault {
-  @apply m-auto max-w-3xl min-h-screen;
+  @apply m-auto max-w-3xl lg:mb-4 min-h-screen;
 }
