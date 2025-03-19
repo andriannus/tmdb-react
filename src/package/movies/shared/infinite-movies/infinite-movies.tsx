@@ -2,14 +2,20 @@ import type {
   InfiniteData,
   UseInfiniteQueryResult,
 } from '@tanstack/react-query';
+import { lazy } from 'react';
 
 import { AppBox } from '#/components/app-box';
 import { AppInfo } from '#/components/app-info';
 import type { PaginationWithResults } from '#/types/pagination';
 import type { MovieForList } from '#/types/movie';
 
-import { LoadMore } from '../load-more';
-import { MovieCard } from '../movie-card';
+const LoadMore = lazy(() =>
+  import('../load-more').then((module) => ({ default: module.LoadMore })),
+);
+
+const MovieCard = lazy(() =>
+  import('../movie-card').then((module) => ({ default: module.MovieCard })),
+);
 
 type InfiniteMoviesProps = {
   queryInfinite: Partial<

@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import cc from 'classcat';
-import { lazy } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { fetchMovie } from '#/apis/movie';
@@ -12,13 +11,9 @@ import { AppInfo } from '#/components/app-info';
 import { TMDB_IMAGE_BASE_URL } from '#/constants/movie';
 import { getYear } from '#/utils/date';
 
-import styles from './movie.module.css';
+import { MovieCredit } from '../shared/movie-credit';
 
-const MovieCredit = lazy(() =>
-  import('../shared/movie-credit').then((module) => ({
-    default: module.MovieCredit,
-  })),
-);
+import styles from './movie.module.css';
 
 function Movie() {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +21,6 @@ function Movie() {
   const queryMovie = useQuery({
     queryKey: ['movie', id],
     queryFn: () => fetchMovie(parseInt(id as string)),
-    enabled: !!id,
   });
 
   const genres = (() => {
@@ -93,7 +87,7 @@ function Movie() {
           </AppBox>
         )}
 
-        {id && <MovieCredit movieID={parseInt(id)} />}
+        <MovieCredit movieID={parseInt(id as string)} />
       </main>
     </>
   );
