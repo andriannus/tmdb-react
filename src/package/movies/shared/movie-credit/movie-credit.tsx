@@ -1,11 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
+import { lazy } from 'react';
 
 import { fetchMovieCredits } from '#/apis/movie';
 import { AppBox } from '#/components/app-box';
 import { AppInfo } from '#/components/app-info';
-import { TMDB_IMAGE_BASE_URL } from '#/constants/movie';
 
 import styles from './movie-credit.module.css';
+
+const CreditList = lazy(() =>
+  import('../credit-list').then((module) => ({
+    default: module.CreditList,
+  })),
+);
 
 type MovieCreditProps = {
   movieID: number;
@@ -16,6 +22,34 @@ function MovieCredit({ movieID }: MovieCreditProps) {
     queryKey: ['movie-credit', movieID],
     queryFn: () => fetchMovieCredits(movieID),
   });
+
+  const director = (() => {
+    if (!queryCredit.data) return [];
+
+    return queryCredit.data.crew
+      .filter((crew) => crew.job === 'Director')
+      .map((crew) => {
+        return {
+          id: crew.id,
+          title: crew.name,
+          subtitle: crew.job,
+          profile_path: crew.profile_path,
+        };
+      });
+  })();
+
+  const cast = (() => {
+    if (!queryCredit.data) return [];
+
+    return queryCredit.data.cast.slice(0, 10).map((cast) => {
+      return {
+        id: cast.id,
+        title: cast.name,
+        subtitle: cast.character,
+        profile_path: cast.profile_path,
+      };
+    });
+  })();
 
   if (queryCredit.isFetching) {
     return (
@@ -30,64 +64,20 @@ function MovieCredit({ movieID }: MovieCreditProps) {
       <AppBox className="mt-4">
         <span className={styles['MovieCredit-title']}>Directing</span>
 
-        {queryCredit.data?.crew.length === 0 ? (
+        {director.length === 0 ? (
           <AppInfo>No data</AppInfo>
         ) : (
-          <div className={styles['MovieCredit-list']}>
-            {queryCredit.data?.crew
-              .filter((crew) => crew.department === 'Directing')
-              .map((crew) => (
-                <div key={crew.id} className={styles['MovieCredit-listItem']}>
-                  <div className={styles['MovieCredit-photo']}>
-                    {crew.profile_path && (
-                      <img
-                        src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
-                        alt={crew.name}
-                        className={styles['MovieCredit-img']}
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="font-semibold">{crew.name}</span>
-                    <span className="text-sm text-gray-400">{crew.job}</span>
-                  </div>
-                </div>
-              ))}
-          </div>
+          <CreditList value={director} />
         )}
       </AppBox>
 
       <AppBox className="mt-4">
         <span className={styles['MovieCredit-title']}>Cast</span>
 
-        {queryCredit.data?.cast.length === 0 ? (
+        {cast.length === 0 ? (
           <AppInfo>No data</AppInfo>
         ) : (
-          <div className={styles['MovieCredit-list']}>
-            {queryCredit.data?.cast.map((crew) => (
-              <div key={crew.id} className={styles['MovieCredit-listItem']}>
-                <div className={styles['MovieCredit-photo']}>
-                  {crew.profile_path && (
-                    <img
-                      src={`${TMDB_IMAGE_BASE_URL}/w200/${crew.profile_path}`}
-                      alt={crew.name}
-                      className={styles['MovieCredit-img']}
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-
-                <div className="flex flex-col">
-                  <span className="font-semibold">{crew.name}</span>
-                  <span className="text-sm text-gray-400">
-                    {crew.character}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <CreditList value={cast} />
         )}
       </AppBox>
     </>
